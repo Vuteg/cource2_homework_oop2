@@ -35,7 +35,7 @@ public class Track extends Transport<DriverC> {
         int min = 20;
         int max = 30;
         int bestTime = (int) (min + (max - min) * Math.random());
-        System.out.println("the best time lap for track" + bestTime);
+        System.out.println("the best time lap for track " + bestTime);
     }
 
     @Override
@@ -43,7 +43,7 @@ public class Track extends Transport<DriverC> {
         int min =90;
         int max = 170;
         int maxSpeed = (int) (min + (max - min) * Math.random());
-        System.out.println("msx speed for track" + maxSpeed);}
+        System.out.println("msx speed for track " + maxSpeed);}
 
 
 }

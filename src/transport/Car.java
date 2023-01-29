@@ -36,7 +36,7 @@ public class Car extends Transport<DriverB> {
         int min = 15;
         int max = 20;
         int bestTime = (int) (min + (max - min) * Math.random());
-        System.out.println("the best time lap for car" + bestTime);
+        System.out.println("the best time lap for car " + bestTime);
     }
 
     @Override
@@ -44,6 +44,6 @@ public class Car extends Transport<DriverB> {
         int min = 110;
         int max = 210;
         int maxSpeed = (int) (min + (max - min) * Math.random());
-        System.out.println("msx speed for car" + maxSpeed);
+        System.out.println("msx speed for car " + maxSpeed);
     }
 }

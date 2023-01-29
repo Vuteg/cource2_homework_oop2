@@ -21,17 +21,39 @@ public class Main {
             Bus bus3 = new Bus("brand №3", "model №3", 0, driverD);
             Bus bus4 = new Bus("brand №4", "model №4", 0, driverD);
 
+            car1.pitStop();
+            car1.theBestTimeLap();
+            car1.maxSpeed();
+        printInfo(car1);
 
+        System.out.println();
 
-            printInfo(car1);
             printInfo(car2);
             printInfo(car3);
             printInfo(car4);
+
+        System.out.println();
+
+        track1.pitStop();
+        track1.theBestTimeLap();
+        track1.maxSpeed();
             printInfo(track1);
+
+        System.out.println();
+
             printInfo(track2);
             printInfo(track3);
             printInfo(track4);
+
+        System.out.println();
+
+        bus1.pitStop();
+        bus1.theBestTimeLap();
+        bus1.maxSpeed();
             printInfo(bus1);
+
+        System.out.println();
+
             printInfo(bus2);
             printInfo(bus3);
             printInfo(bus4);
