@@ -1,35 +1,49 @@
-import transport.Bus;
-import transport.Car;
-import transport.Transport;
+import transport.*;
 
 public class Main {
     public static void main(String[] args) {
 
-        Car car1 = new Car ("Lada", "Granta", 2015, "Russia", "", 5, 1.6, 160," yellow", " " ,"а123уе198", true, new Car.Key(false, false));
-        Car car2 = new Car ("Audi", "A8 50L TDI quattro", 2020, "Germany", "hatch bag", 3,  2.0, 210,"black", "automatic", "", false,new Car.Key(true, true));
-        Car car3 = new Car ("BMW", "Z8", 2021, "Germany", "uneversal", 7, 3.0, 220,"red", "automatic", "о000оо777", true, new Car.Key(true, true));
-        Car car4 = new Car ("Kia", "Sportage 4 generate", 2018, "South Korea", "", 5, 2.5, 180,"blue", "", "л013ох777", false, new Car.Key(true, false));
-        Car car5 = new Car ("Hyundai", "Avente", 2016, "South Korea", "   ", 4, 1.3, 170, " ", "cvt", "   ", true, new Car.Key(false, false) );
-        Car car6 = new Car("Lada", "Vesta", 2019, "Russia", "", 0, 1.8, 180, "", "cvt", "", true, new Car.Key(false, true));
-        Car car7 = new Car("   ", "    ",  0, "", "  ", 0, 0, 0, "", " ", "", false, new Car.Key(false, false));
 
-        System.out.println(car1);
-        System.out.println(car2);
-        System.out.println(car3);
-        System.out.println(car4);
-        System.out.println(car5);
-        System.out.println(car6);
-        System.out.println(car7);
+        DriverB driverB = new DriverB("Ivan", true, 4);
+        DriverC driverC = new DriverC("Vasilii", true, 7);
+        DriverD driverD = new DriverD("Nikolai", true, 9);
 
-        car2.checkChangeTires(1);
-        System.out.println(car2);
+        Car car1 = new Car("brand №1", "model №1", 0, driverB);
+        Car car2 = new Car("brand №2", "model №2", 0, driverB);
+        Car car3 = new Car("brand №3", "model №3", 0, driverB);
+        Car car4 = new Car("brand №4", "model №4", 0, driverB);
+        Track track1 = new Track("brand №1", "model №1", 0, driverC);
+        Track track2 = new Track("brand №2", "model №2", 0, driverC);
+        Track track3 = new Track("brand №3", "model №3", 0, driverC);
+        Track track4 = new Track("brand №4", "model №4", 0, driverC);
+            Bus bus1 = new Bus("brand №1", "model №1", 0, driverD);
+            Bus bus2 = new Bus("brand №2", "model №2", 0, driverD);
+            Bus bus3 = new Bus("brand №3", "model №3", 0, driverD);
+            Bus bus4 = new Bus("brand №4", "model №4", 0, driverD);
 
-        Bus bus1 = new Bus("Maz", " 69", 2017, "Belarus", "pink", 50);
-        Bus bus2 = new Bus("  ", "covid", 2020, "China", "black", 350);
-        Bus bus3 = new Bus("zaz", "333", 2022, "USA", "red", 200);
-        System.out.println(bus1);
-        System.out.println(bus2);
-        System.out.println(bus3);
+
+
+            printInfo(car1);
+            printInfo(car2);
+            printInfo(car3);
+            printInfo(car4);
+            printInfo(track1);
+            printInfo(track2);
+            printInfo(track3);
+            printInfo(track4);
+            printInfo(bus1);
+            printInfo(bus2);
+            printInfo(bus3);
+            printInfo(bus4);
+
+
+
+
+
+    }
+
+    private static void printInfo(Transport <?> transport) {
+        System.out.println("Driver " + transport.getDriver().getName() + " manages " + transport.getBrand() + " will participate in the race");
 
     }
 }

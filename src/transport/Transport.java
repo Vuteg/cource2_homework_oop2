@@ -1,83 +1,63 @@
 package transport;
 
-public abstract class Transport {
-        private final String brand;
-        private final String model;
-        private final int productionYear;
-        private final String productionCountry;
-        private String bodyColor;
-        private int maxSpeed;
+public abstract class Transport<T extends Driver> implements Competing{
+    private final String brand;
+    private final String model;
+    private double engineVolume;
+    private T driver;
 
-        public Transport(String brand, String model, int productionYear, String productionCountry, String bodyColor, int maxSpeed) {
-            this.brand = validateBrand(brand);
-            this.model = validateModel(model);
-            this.productionYear = validateProductionYear(productionYear);
-            this.productionCountry = validateProductionCountry(productionCountry);
-            setBodyColor(bodyColor);
-            setMaxSpeed(maxSpeed);
-        }
+    public Transport(String brand, String model, double engineVolume, T driver) {
+        this.brand = validateBrand(brand);
+        this.model = validateModel(model);
+        this.engineVolume = validateEngineVolume(engineVolume);
+        this.driver =driver;
+    }
 
-        public String getBrand() {
-            return brand;
-        }
+    public String getBrand() {
+        return brand;
+    }
 
+    public String getModel() {
+        return model;
+    }
 
-        public String getModel() {
-            return model;
-        }
+    public double getEngineVolume() {
+        return engineVolume;
+    }
 
-
-        public int getProductionYear() {
-            return productionYear;
-        }
-
-        public String getProductionCountry() {
-            return productionCountry;
-        }
-
-        public String getBodyColor() {
-            return bodyColor;
-        }
-
-        public void setBodyColor(String bodyColor) {
-            if (bodyColor == null || bodyColor.isEmpty() || bodyColor.isBlank())
-                bodyColor = "white";
-            this.bodyColor = bodyColor;
-        }
-
-        public int getMaxSpeed() {
-            return maxSpeed;
-        }
-
-        public void setMaxSpeed(int maxSpeed) {
-            if (maxSpeed <= 0)
-                maxSpeed = 120;
-            this.maxSpeed = maxSpeed;
-        }
+    public void setEngineVolume(double engineVolume) {
+        this.engineVolume = engineVolume;
+    }
 
     public String validateBrand(String brand) {
-           return (brand== null || brand.isEmpty() || brand.isBlank())? "unknown brand" : brand;
+        return (brand == null || brand.isBlank() || brand.isEmpty()) ? "default" : brand;
+
     }
     public String validateModel(String model) {
-        return (model== null || model.isEmpty() || model.isBlank())?"unknown model": model;
-    }
-    public int validateProductionYear (int productionYear) {
-        return productionYear <= 0 ? 2000 : productionYear;
+        return (model == null || model.isBlank() || model.isEmpty()) ? "default": model;}
+
+    public double validateEngineVolume(double engineVolume) {
+        return (engineVolume == 0) ? 2.5 : engineVolume;
     }
 
-    public String validateProductionCountry(String productionCountry) {
-        return (productionCountry == null || productionCountry.isEmpty() || productionCountry.isBlank()) ? "unknown country" : productionCountry;
+    public T getDriver() {
+        return driver;
     }
+
+    public void setDriver(T driver) {
+        this.driver = driver;
+    }
+
+    public abstract void Start();
+
+    public abstract void stop();
 
     @Override
     public String toString() {
         return "Transport{" +
                 "brand='" + brand + '\'' +
                 ", model='" + model + '\'' +
-                ", productionYear=" + productionYear +
-                ", productionCountry='" + productionCountry + '\'' +
-                ", bodyColor='" + bodyColor + '\'' +
-                ", maxSpeed=" + maxSpeed +
+                ", engineVolume=" + engineVolume +
                 '}';
     }
 }
