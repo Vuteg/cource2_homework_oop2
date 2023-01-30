@@ -2,9 +2,54 @@ package transport;
 
 public class Track extends Transport<DriverC> {
 
+    enum LoadCapacity {
+        N1(0, 3.5f),
+        N2(3.5f, 12.0f),
+        N3(12.0f, 0);
 
-    public Track(String brand, String model, double engineVolume, DriverC driver) {
-        super(brand, model, engineVolume, driver);
+        private float minWeight;
+        private float maxWeight;
+
+        LoadCapacity(float minWeight, float maxWeight) {
+            this.minWeight = minWeight;
+            this.maxWeight = maxWeight;
+        }
+
+        public float getMinWeight() {
+            return minWeight;
+        }
+
+        public float getMaxWeight() {
+            return maxWeight;
+        }
+
+        @Override
+        public String toString() {
+            if (minWeight == 0 && maxWeight > 0) {
+                return " Грузоподъемность до " + maxWeight + " тонн";
+            }
+            if (minWeight > 0 && maxWeight > minWeight) {
+                return " Грузоподъемность от " + minWeight + " тонн, до " + maxWeight + " тонн";
+            }
+            if (maxWeight == 0 && minWeight > 0) {
+                return " Грузоподъемность свыше " + minWeight + " тонн";
+            }
+            return "некорректные данные";
+        }
+    }
+        Enum loadCapacity;
+
+        public Track(String brand, String model, double engineVolume, DriverC driver, Enum loadCapacity) {
+            super(brand, model, engineVolume, driver);
+            this.loadCapacity = loadCapacity;
+        }
+
+    public Enum getLoadCapacity() {
+        return loadCapacity;
+    }
+
+    public void setLoadCapacity(Enum loadCapacity) {
+        this.loadCapacity = loadCapacity;
     }
 
     @Override
@@ -24,6 +69,15 @@ public class Track extends Transport<DriverC> {
     public void stop() {
         System.out.println("Track" + getBrand() + "finish movement");
     }
+
+    @Override
+    public void printType() {
+        if (getBrand() == null || getModel() == null || getLoadCapacity() == null){
+            System.out.println("Данных по транспортному средству недостаточно");
+        }
+        System.out.println(getBrand() + " " + getModel() +" " + getLoadCapacity());
+    }
+
     @Override
     public void pitStop() {
         System.out.println("pit-Stop at track");
@@ -45,5 +99,8 @@ public class Track extends Transport<DriverC> {
         int maxSpeed = (int) (min + (max - min) * Math.random());
         System.out.println("msx speed for track " + maxSpeed);}
 
-
+    @Override
+    public String toString() {
+        return super.toString() + loadCapacity ;
+    }
 }

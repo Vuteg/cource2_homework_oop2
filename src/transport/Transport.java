@@ -47,10 +47,11 @@ public abstract class Transport<T extends Driver> implements Competing{
     public void setDriver(T driver) {
         this.driver = driver;
     }
-
     public abstract void Start();
 
     public abstract void stop();
+
+    public abstract void printType();
 
     @Override
     public String toString() {

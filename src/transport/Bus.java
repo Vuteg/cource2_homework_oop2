@@ -2,9 +2,54 @@ package transport;
 
 public class Bus extends Transport<DriverD> {
 
+    enum PassengerCapacity {
 
-    public Bus(String brand, String model, double engineVolume, DriverD driver) {
+        verySmall(0, 10),
+        small(0, 25),
+        average(40,50),
+        large(60,80),
+        veryLarge(100,120);
+
+        Integer minSeatCount;
+        Integer maxSeatCount;
+
+        PassengerCapacity(Integer minSeatCount, Integer maxSeatCount) {
+            this.minSeatCount = minSeatCount;
+            this.maxSeatCount = maxSeatCount;
+        }
+
+        public Integer getMinSeatCount() {
+            return minSeatCount;
+        }
+
+        public Integer getMaxSeatCount() {
+            return maxSeatCount;
+        }
+
+        @Override
+        public String toString() {
+            if (minSeatCount == 0 && maxSeatCount > 0) {
+                return "пассажировместивость до " + maxSeatCount + " мест";
+            }
+            if (minSeatCount > 0 && maxSeatCount > minSeatCount) {
+                return "пассажировместивость от " + minSeatCount + " до " + maxSeatCount + " мест";
+            }
+            return "неккоректное значение";
+            }
+    }
+
+    private Enum passengerCapacity;
+    public Bus(String brand, String model, double engineVolume, DriverD driver, Enum passengerCapacity) {
         super(brand, model, engineVolume, driver);
+        this.passengerCapacity = passengerCapacity;
+    }
+
+    public Enum getPassengerCapacity() {
+        return passengerCapacity;
+    }
+
+    public void setPassengerCapacity(Enum passengerCapacity) {
+        this.passengerCapacity = passengerCapacity;
     }
 
     @Override
@@ -24,6 +69,15 @@ public class Bus extends Transport<DriverD> {
     @Override
     public void stop() {
         System.out.println("Bus" + getBrand() + "finish movement");
+    }
+
+
+    @Override
+    public void printType() {
+        if (getBrand() == null || getModel() == null || getPassengerCapacity() == null ){
+            System.out.println("Данных по транспортному средству недостаточно");
+        }
+        System.out.println(getBrand() + " " + getModel() + " " + getPassengerCapacity());
     }
 
     @Override
@@ -46,5 +100,10 @@ public class Bus extends Transport<DriverD> {
         int max = 140;
         int maxSpeed = (int) (min + (max - min) * Math.random());
         System.out.println("msx speed for bus " + maxSpeed);
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + passengerCapacity;
     }
 }
