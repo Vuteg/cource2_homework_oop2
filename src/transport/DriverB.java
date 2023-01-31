@@ -24,4 +24,8 @@ public class DriverB extends Driver{
 
     }
 
+    @Override
+    public String toString() {
+        return "DriverB{}";
+    }
 }

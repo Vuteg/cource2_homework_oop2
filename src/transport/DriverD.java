@@ -22,4 +22,9 @@ public class DriverD extends Driver{
         System.out.println("driver category D" + getName() + "refueling the bus");
 
     }
+
+    @Override
+    public String toString() {
+        return "DriverD{}";
+    }
 }

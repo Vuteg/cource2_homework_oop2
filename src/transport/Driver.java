@@ -44,4 +44,12 @@ public abstract class Driver {
         return (name == null || name.isEmpty() || name.isBlank()) ? "name" : name;
     }
 
+    @Override
+    public String toString() {
+        return "Driver{" +
+                "name='" + name + '\'' +
+                ", driverLicense=" + driverLicense +
+                ", experienceInYears=" + experienceInYears +
+                '}';
+    }
 }
