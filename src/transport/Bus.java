@@ -4,16 +4,16 @@ public class Bus extends Transport<DriverD> {
 
     enum PassengerCapacity {
 
-        verySmall(0, 10),
-        small(0, 25),
-        average(40,50),
-        large(60,80),
-        veryLarge(100,120);
+        VERY_SMALL(0, 10),
+        SMALL(0, 25),
+        AVERAGE(40, 50),
+        LARGE(60, 80),
+        VERY_LARGE(100, 120);
 
         Integer minSeatCount;
         Integer maxSeatCount;
 
-        PassengerCapacity(Integer minSeatCount, Integer maxSeatCount) {
+        PassengerCapacity(Integer minSeatCount, Integer maxSeatCount){
             this.minSeatCount = minSeatCount;
             this.maxSeatCount = maxSeatCount;
         }
@@ -35,10 +35,11 @@ public class Bus extends Transport<DriverD> {
                 return "пассажировместивость от " + minSeatCount + " до " + maxSeatCount + " мест";
             }
             return "неккоректное значение";
-            }
+        }
     }
 
     private Enum passengerCapacity;
+
     public Bus(String brand, String model, double engineVolume, DriverD driver, Enum passengerCapacity) {
         super(brand, model, engineVolume, driver);
         this.passengerCapacity = passengerCapacity;
@@ -56,11 +57,13 @@ public class Bus extends Transport<DriverD> {
     public double validateEngineVolume(double engineVolume) {
         return (engineVolume == 0) ? 6.5 : engineVolume;
     }
+
     @Override
     public String validateBrand(String brand) {
         return (brand == null || brand.isBlank() || brand.isEmpty()) ? "Bus" : brand;
 
     }
+
     @Override
     public void Start() {
         System.out.println("Bus" + getBrand() + "start movement");
@@ -74,10 +77,15 @@ public class Bus extends Transport<DriverD> {
 
     @Override
     public void printType() {
-        if (getBrand() == null || getModel() == null || getPassengerCapacity() == null ){
+        if (getBrand() == null || getModel() == null || getPassengerCapacity() == null) {
             System.out.println("Данных по транспортному средству недостаточно");
         }
         System.out.println(getBrand() + " " + getModel() + " " + getPassengerCapacity());
+    }
+
+    @Override
+    public void passDiagnostics() throws TransportTypeException {
+        throw new TransportTypeException("Buses should not undergo diagnostics");
     }
 
     @Override
@@ -96,7 +104,7 @@ public class Bus extends Transport<DriverD> {
 
     @Override
     public void maxSpeed() {
-        int min =70;
+        int min = 70;
         int max = 140;
         int maxSpeed = (int) (min + (max - min) * Math.random());
         System.out.println("msx speed for bus " + maxSpeed);

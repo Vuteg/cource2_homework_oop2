@@ -83,6 +83,11 @@ public class Track extends Transport<DriverC> {
         System.out.println("pit-Stop at track");
 
     }
+    @Override
+    public void passDiagnostics() {
+        System.out.println("pass diagnostics for the track");
+    }
+
 
     @Override
     public void theBestTimeLap() {

@@ -1,9 +1,8 @@
 package transport;
 
-import transport.*;
-
 public class Main {
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws TransportTypeException {
 
 
         DriverB driverB = new DriverB("Ivan", true, 4);
@@ -18,48 +17,48 @@ public class Main {
         Track track2 = new Track("brand №2", "model №2", 0, driverC, Track.LoadCapacity.N2);
         Track track3 = new Track("brand №3", "model №3", 0, driverC, Track.LoadCapacity.N3);
         Track track4 = new Track("brand №4", "model №4", 0, driverC, Track.LoadCapacity.N2);
-            Bus bus1 = new Bus("brand №1", "model №1", 0, driverD, Bus.PassengerCapacity.verySmall);
-            Bus bus2 = new Bus("brand №2", "model №2", 0, driverD, Bus.PassengerCapacity.small);
-            Bus bus3 = new Bus("brand №3", "model №3", 0, driverD, Bus.PassengerCapacity.average);
-            Bus bus4 = new Bus("brand №4", "model №4", 0, driverD, Bus.PassengerCapacity.large);
-            Bus bus5 = new Bus("brand №5", "model №5", 0, driverD, Bus.PassengerCapacity.veryLarge);
+        Bus bus1 = new Bus("brand №1", "model №1", 0, driverD, Bus.PassengerCapacity.VERY_SMALL);
+        Bus bus2 = new Bus("brand №2", "model №2", 0, driverD, Bus.PassengerCapacity.SMALL);
+        Bus bus3 = new Bus("brand №3", "model №3", 0, driverD, Bus.PassengerCapacity.AVERAGE);
+        Bus bus4 = new Bus("brand №4", "model №4", 0, driverD, Bus.PassengerCapacity.LARGE);
+        Bus bus5 = new Bus("brand №5", "model №5", 0, driverD, Bus.PassengerCapacity.VERY_LARGE);
 
-            car1.pitStop();
-            car1.theBestTimeLap();
-            car1.maxSpeed();
+        car1.pitStop();
+        car1.theBestTimeLap();
+        car1.maxSpeed();
         printInfo(car1);
 
         System.out.println();
 
-            printInfo(car2);
-            printInfo(car3);
-            printInfo(car4);
+        printInfo(car2);
+        printInfo(car3);
+        printInfo(car4);
 
         System.out.println();
 
         track1.pitStop();
         track1.theBestTimeLap();
         track1.maxSpeed();
-            printInfo(track1);
+        printInfo(track1);
 
         System.out.println();
 
-            printInfo(track2);
-            printInfo(track3);
-            printInfo(track4);
+        printInfo(track2);
+        printInfo(track3);
+        printInfo(track4);
 
         System.out.println();
 
         bus1.pitStop();
         bus1.theBestTimeLap();
         bus1.maxSpeed();
-            printInfo(bus1);
+        printInfo(bus1);
 
         System.out.println();
 
-            printInfo(bus2);
-            printInfo(bus3);
-            printInfo(bus4);
+        printInfo(bus2);
+        printInfo(bus3);
+        printInfo(bus4);
 
         System.out.println("====================================================================================================================================================");
 
@@ -89,11 +88,31 @@ public class Main {
         bus5.printType();
         bus2.printType();
 
+        car3.passDiagnostics();
+        car4.passDiagnostics();
+        track3.passDiagnostics();
+        track4.passDiagnostics();
 
+
+        try {
+            bus1.passDiagnostics();
+            bus2.passDiagnostics();
+            bus3.passDiagnostics();
+            bus4.passDiagnostics();
+            bus5.passDiagnostics();
+        } catch (TransportTypeException t) {
+            System.out.println(t.getMessage());
+            System.err.println("Buses should not undergo diagnostics");
+        }
+
+        car3.passDiagnostics();
+        car4.passDiagnostics();
+        track3.passDiagnostics();
+        track4.passDiagnostics();
 
     }
 
-    private static void printInfo(Transport <?> transport) {
+    private static void printInfo(Transport<?> transport) {
         System.out.println("Driver " + transport.getDriver().getName() + " manages " + transport.getBrand() + " will participate in the race");
 
     }
