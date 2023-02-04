@@ -71,6 +71,11 @@ public class Car extends Transport<DriverB> {
     }
 
     @Override
+    public void passDiagnostics() {
+        System.out.println("pass diagnostics for the car");
+    }
+
+    @Override
     public void pitStop() {
         System.out.println("pit-Stop at car");
 
