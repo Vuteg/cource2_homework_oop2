@@ -40,9 +40,11 @@ public class Bus extends Transport<DriverD> {
 
     private Enum passengerCapacity;
 
-    public Bus(String brand, String model, double engineVolume, DriverD driver, Enum passengerCapacity) {
-        super(brand, model, engineVolume, driver);
+
+    public Bus(String brand, String model, double engineVolume, DriverD driver, Enum passengerCapacity, Mechanic mechanic) {
+        super(brand, model, engineVolume, driver, mechanic);
         this.passengerCapacity = passengerCapacity;
+
     }
 
     public Enum getPassengerCapacity() {
@@ -108,6 +110,11 @@ public class Bus extends Transport<DriverD> {
         int max = 140;
         int maxSpeed = (int) (min + (max - min) * Math.random());
         System.out.println("msx speed for bus " + maxSpeed);
+    }
+
+    @Override
+    public String repair(){
+        return "repair bus";
     }
 
     @Override

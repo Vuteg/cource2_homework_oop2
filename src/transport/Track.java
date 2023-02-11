@@ -39,8 +39,8 @@ public class Track extends Transport<DriverC> {
     }
         Enum loadCapacity;
 
-        public Track(String brand, String model, double engineVolume, DriverC driver, Enum loadCapacity) {
-            super(brand, model, engineVolume, driver);
+        public Track(String brand, String model, double engineVolume, DriverC driver, Enum loadCapacity, Mechanic mechanic) {
+            super(brand, model, engineVolume, driver, mechanic);
             this.loadCapacity = loadCapacity;
         }
 
@@ -103,6 +103,10 @@ public class Track extends Transport<DriverC> {
         int max = 170;
         int maxSpeed = (int) (min + (max - min) * Math.random());
         System.out.println("msx speed for track " + maxSpeed);}
+    @Override
+    public String repair(){
+        return "repair truck";
+    }
 
     @Override
     public String toString() {

@@ -1,6 +1,6 @@
 package transport;
 
-import java.util.regex.Pattern;
+import java.util.ArrayList;
 
 public class Car extends Transport<DriverB> {
 
@@ -33,8 +33,8 @@ public class Car extends Transport<DriverB> {
     }
     private Enum bodyType;
 
-    public Car(String brand, String model, double engineVolume, DriverB driver, Enum bodyType) {
-        super(brand, model, engineVolume, driver);
+    public Car(String brand, String model, double engineVolume, DriverB driver, Enum bodyType, ArrayList<Mechanic> mechanicList) {
+        super(brand, model, engineVolume, driver, mechanicList);
         this.bodyType = bodyType;
     }
 
@@ -97,7 +97,12 @@ public class Car extends Transport<DriverB> {
         System.out.println("msx speed for car " + maxSpeed);
     }
     @Override
+    public String repair(){
+        return "repair car";
+    }
+    @Override
     public String toString() {
         return super.toString() + bodyType;
     }
+
 }
