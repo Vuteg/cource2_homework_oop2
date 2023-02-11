@@ -1,9 +1,6 @@
 package transport;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 public class Main {
 
@@ -40,55 +37,78 @@ public class Main {
 
 
 
-        System.out.println(racer.get(2));
-        System.out.println(racer.get(4));
-        System.out.println(racer.get(6));
-        System.out.println(racer.get(9));
+//        System.out.println(racer.get(2));
+//        System.out.println(racer.get(4));
+//        System.out.println(racer.get(6));
+//        System.out.println(racer.get(9));
+//
+//
+//        getInfo(racer.get(0));
+//        getInfo(racer.get(1));
+//        getInfo(racer.get(2));
+//        getInfo(racer.get(6));
+//        getInfo(racer.get(4));
+//        getInfo(racer.get(9));
+//        getInfo(racer.get(9));
+//        getInfo(racer.get(10));
+//
+//
+//        Mechanic.carryOutMaintenance(racer.get(1));
+//        Mechanic.carryOutMaintenance(racer.get(2));
+//        Mechanic.carryOutMaintenance(racer.get(3));
+//        Mechanic.carryOutMaintenance(racer.get(4));
+//        Mechanic.carryOutMaintenance(racer.get(6));
+//        Mechanic.carryOutMaintenance(racer.get(8));
+//        Mechanic.repairTheCar(racer.get(1));
+//        Mechanic.repairTheCar(racer.get(2));
+//        Mechanic.repairTheCar(racer.get(6));
+//        Mechanic.repairTheCar(racer.get(7));
+//        Mechanic.repairTheCar(racer.get(8));
+//        Mechanic.repairTheCar(racer.get(9));
+//
+//        System.out.println("=======================================================================================================================================");
+//        System.out.println();
+//
+//
+//        Queue<Transport> queueForService = new LinkedList<>();
+//
+//
+//
+//
+//        mechanics.get(0).carryOutMaintenance(racer.get(1));
+//        mechanics.get(1).repairTheCar(racer.get(6));
+//
+//
+//        getInfo(racer.get(9));
+//        getInfo(racer.get(4));
+
+        Car car1 = (Car) racer.get(0);
+        Car car2 = (Car) racer.get(1);
+        Track track1 = (Track) racer.get(4);
+        Track track2 = (Track) racer.get(7);
+        Bus bus1 = (Bus) racer.get(8);
+        Bus bus2 = (Bus) racer.get(10);
 
 
-        getInfo(racer.get(0));
-        getInfo(racer.get(1));
-        getInfo(racer.get(2));
-        getInfo(racer.get(6));
-        getInfo(racer.get(4));
-        getInfo(racer.get(9));
-        getInfo(racer.get(9));
-        getInfo(racer.get(10));
+        Map<Transport, List<Mechanic>> hashTransport = new HashMap<>();
+
+        hashTransport.put(car1, car1.getMechanicList());
+        hashTransport.put(car2, car2.getMechanicList());
+        hashTransport.put(track1, track1.getMechanicList());
+        hashTransport.put(track2, track2.getMechanicList());
+        hashTransport.put(bus1, bus1.getMechanicList());
+        hashTransport.put(bus2, bus2.getMechanicList());
 
 
-        Mechanic.carryOutMaintenance(racer.get(1));
-        Mechanic.carryOutMaintenance(racer.get(2));
-        Mechanic.carryOutMaintenance(racer.get(3));
-        Mechanic.carryOutMaintenance(racer.get(4));
-        Mechanic.carryOutMaintenance(racer.get(6));
-        Mechanic.carryOutMaintenance(racer.get(8));
-        Mechanic.repairTheCar(racer.get(1));
-        Mechanic.repairTheCar(racer.get(2));
-        Mechanic.repairTheCar(racer.get(6));
-        Mechanic.repairTheCar(racer.get(7));
-        Mechanic.repairTheCar(racer.get(8));
-        Mechanic.repairTheCar(racer.get(9));
-
-        System.out.println("=======================================================================================================================================");
-        System.out.println();
+        for (Map.Entry<Transport, List<Mechanic>> list : hashTransport.entrySet()) {
+            System.out.println(list.getKey());
+        }
 
 
-        Queue<Transport> queueForService = new LinkedList<>();
-
-
-
-
-        mechanics.get(0).carryOutMaintenance(racer.get(1));
-        mechanics.get(1).repairTheCar(racer.get(6));
-
-
-        getInfo(racer.get(9));
-        getInfo(racer.get(4));
+//            System.out.println("transport " + list.getKey() + " mechanic " + list.getValue());}
 
 
     }
-
-
 
 
     private static void printInfo(Transport<?> transport) {

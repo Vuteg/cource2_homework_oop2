@@ -8,7 +8,7 @@ public abstract class Transport<T extends Driver> implements Competing{
     private final String brand;
     private final String model;
     private double engineVolume;
-    private T driver;
+    private  T driver;
 
 
     private List<Mechanic> mechanicList;
@@ -87,10 +87,22 @@ public abstract class Transport<T extends Driver> implements Competing{
     }
     public abstract String repair();
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Transport<?> transport = (Transport<?>) o;
+        return Double.compare(transport.engineVolume, engineVolume) == 0 && brand.equals(transport.brand) && model.equals(transport.model) && driver.equals(transport.driver) && mechanicList.equals(transport.mechanicList);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(brand, model, engineVolume, driver, mechanicList);
+    }
 
     @Override
     public String toString() {
-        return "Transport{" +
+        return "{" +
                 "brand='" + brand + '\'' +
                 ", model='" + model + '\'' +
                 ", engineVolume=" + engineVolume + ". mechanic " + mechanicList +

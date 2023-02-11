@@ -119,6 +119,6 @@ public class Bus extends Transport<DriverD> {
 
     @Override
     public String toString() {
-        return super.toString() + passengerCapacity;
+        return "Bus " + super.toString() + passengerCapacity;
     }
 }
