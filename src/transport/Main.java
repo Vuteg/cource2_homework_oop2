@@ -7,8 +7,6 @@ public class Main {
 
     public static void main(String[] args) throws TransportTypeException {
 
-
-
         DriverB driverB = new DriverB("Ivan Ivanov", true, 4);
         DriverC driverC = new DriverC("Vasilii Kurochkin", true, 7);
         DriverD driverD = new DriverD("Nikolai Shnicel", true, 9);
@@ -17,7 +15,6 @@ public class Main {
         mechanics.add(new Mechanic("Anton Stepanov", "Max motors"));
         mechanics.add(new Mechanic("Akakei Ponosov", "STO № 1"));
         mechanics.add(new Mechanic("Zeliboba Boba", "Spot"));
-
 
         List<Transport> racer = new ArrayList<>();
 
@@ -34,53 +31,6 @@ public class Main {
         racer.add(new Bus("brand bus №3", "model №3", 0, driverD, Bus.PassengerCapacity.AVERAGE, mechanics.get(2)));
         racer.add(new Bus("brand bus №4", "model №4", 0, driverD, Bus.PassengerCapacity.LARGE, mechanics.get(2)));
         racer.add(new Bus("brand bus №5", "model №5", 0, driverD, Bus.PassengerCapacity.VERY_LARGE, mechanics.get(2)));
-
-
-
-//        System.out.println(racer.get(2));
-//        System.out.println(racer.get(4));
-//        System.out.println(racer.get(6));
-//        System.out.println(racer.get(9));
-//
-//
-//        getInfo(racer.get(0));
-//        getInfo(racer.get(1));
-//        getInfo(racer.get(2));
-//        getInfo(racer.get(6));
-//        getInfo(racer.get(4));
-//        getInfo(racer.get(9));
-//        getInfo(racer.get(9));
-//        getInfo(racer.get(10));
-//
-//
-//        Mechanic.carryOutMaintenance(racer.get(1));
-//        Mechanic.carryOutMaintenance(racer.get(2));
-//        Mechanic.carryOutMaintenance(racer.get(3));
-//        Mechanic.carryOutMaintenance(racer.get(4));
-//        Mechanic.carryOutMaintenance(racer.get(6));
-//        Mechanic.carryOutMaintenance(racer.get(8));
-//        Mechanic.repairTheCar(racer.get(1));
-//        Mechanic.repairTheCar(racer.get(2));
-//        Mechanic.repairTheCar(racer.get(6));
-//        Mechanic.repairTheCar(racer.get(7));
-//        Mechanic.repairTheCar(racer.get(8));
-//        Mechanic.repairTheCar(racer.get(9));
-//
-//        System.out.println("=======================================================================================================================================");
-//        System.out.println();
-//
-//
-//        Queue<Transport> queueForService = new LinkedList<>();
-//
-//
-//
-//
-//        mechanics.get(0).carryOutMaintenance(racer.get(1));
-//        mechanics.get(1).repairTheCar(racer.get(6));
-//
-//
-//        getInfo(racer.get(9));
-//        getInfo(racer.get(4));
 
         Car car1 = (Car) racer.get(0);
         Car car2 = (Car) racer.get(1);
@@ -100,12 +50,60 @@ public class Main {
         hashTransport.put(bus2, bus2.getMechanicList());
 
 
-        for (Map.Entry<Transport, List<Mechanic>> list : hashTransport.entrySet()) {
-            System.out.println(list.getKey());
+//        for (Map.Entry<Transport, List<Mechanic>> list : hashTransport.entrySet()) {
+//            System.out.println(list.getKey());
+//        }
+//            System.out.println("transport " + list.getKey() + " mechanic " + list.getValue());}
+
+        Set<Driver> drivers = new HashSet<>();
+
+
+        DriverB driverB1 = driverB;
+        DriverB driverB2 = new DriverB("Boris Britva", false, 1);;
+
+        drivers.add(driverB);
+        drivers.add(driverB1);
+        drivers.add(driverC);
+        drivers.add(driverD);
+        drivers.add(driverD);
+
+        System.out.println(drivers.size());
+        System.out.println(drivers);
+
+
+        List<Driver> driverList = new ArrayList<>();
+
+
+        driverList.add(driverB);
+        driverList.add(driverC);
+        driverList.add(driverD);
+        driverList.add(driverB2);
+
+        Iterator<Driver> driverIterator = driverList.iterator();
+
+        while (driverIterator.hasNext()) {
+            System.out.println(driverIterator.next());
+
         }
 
 
-//            System.out.println("transport " + list.getKey() + " mechanic " + list.getValue());}
+        System.out.println("===========================");
+
+
+        Iterator<Driver> driverIterator1 = driverList.iterator();
+
+
+
+        while (driverIterator1.hasNext()) {
+            if (driverB2.equals(driverIterator1.next())) {
+                driverIterator1.remove();
+                System.out.println(driverList);
+            }
+        }
+
+
+
+
 
 
     }
