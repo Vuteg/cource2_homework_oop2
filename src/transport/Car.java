@@ -102,7 +102,7 @@ public class Car extends Transport<DriverB> {
     }
     @Override
     public String toString() {
-        return super.toString() + bodyType;
+        return "Car " + super.toString() + bodyType;
     }
 
 }

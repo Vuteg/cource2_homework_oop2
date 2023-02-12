@@ -110,6 +110,6 @@ public class Track extends Transport<DriverC> {
 
     @Override
     public String toString() {
-        return super.toString() + loadCapacity ;
+        return "Track " + super.toString() + loadCapacity ;
     }
 }
